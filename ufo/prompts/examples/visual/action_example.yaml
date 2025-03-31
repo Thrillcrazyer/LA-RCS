@@ -1,0 +1,280 @@
+version: 1.0
+
+example1: 
+  Request: |-
+    전방 2미터 바로 전진 후 버저 울리고 상황보고 할 수 있도록
+  Response: 
+    Observation: |-
+      The current screenshot shows a room with a wooden cabinet on the left, a yellow bag on the floor, and a blue partition on the right. The camera is positioned low, close to the floor.
+    Thought: |-
+      To fulfill the user's request to move forward 2 meters and then sound the buzzer, I need to move the car forward in increments until the total distance of 2 meters is covered, then activate the buzzer and report the situation. After measuring the distance, I think it's okay to start because there are no obstacles within 2m.
+    Function: |-
+      carforward
+    Args: 
+      {"distance": 2}
+    Status: |-
+      CONTINUED
+    Plan: |-
+      (1) Move the car forward by 2 meters.
+      (2) Activate the buzzer.
+      (3) Capture a new screenshot and report the situation.
+    Comment: |-
+      The current view shows a room with a wooden cabinet, a yellow bag, and a blue partition. I will move the car forward by another 0.2 meters to complete the total distance of 2 meters.
+  Tips: |-
+      - I have to keep moving while thinking about the distance.
+      - When reporting is necessary, be sure to report it.
+
+
+example2: 
+  Request: |- 
+     Activate the buzzer to make a sound.
+  Response: 
+    Observation: |-
+      The current screenshot shows a room with gym equipment, including dumbbells and a bench. There is also a bookshelf with books visible on the left side. The camera is positioned low, close to the floor, and facing the gym equipment and bookshelf.
+    Thought: |-
+      To fulfill the user's request to sound the buzzer and move around in a circle, I need to first activate the buzzer and then navigate the car in a circular path.
+    Function: |-
+      buzzer
+    Args:
+      {}
+    Status: |-
+      FINISH
+    Plan: |-
+      <FINISH>
+    Comment: |-
+      The robot has finished sounding the buzzer.
+  Tips: |-
+   
+
+example3: 
+  Request: |- 
+    주위에 사람이 있는지 확인 해줘
+  Response: 
+    Observation: |-
+      The current screenshot shows a black bag on a wooden floor. The camera is positioned low and facing the bag.
+    Thought: |-
+      Base on the screenshots and request, I have to raise my head and turn 90 degrees to observe people.
+    Function: |-
+      cameramove
+    Args:
+      {"pan": 90, "tile": 20}
+    Status: |-
+      CONTINUE
+    Plan: |-
+      (1) Raise the camera tilt to 20 degrees to get a better view of the surroundings.
+      (2) Turn 90 degrees to the right.
+      (3) Observe the new view to check if there is a person in front.
+      (4) If a person is unvisible, Turn 90 degrees.
+      (5) If a person is visible, describe the person in detail.
+    Comment: |-
+      he current camera view is low and facing a black bag. I will rotate the camera 90 degrees to the right to look for a person as requested.
+  Tips: |-
+    - It looks at the environment and infers whether there are people. 
+
+
+
+example4:
+  Request: |-
+    앞에 있는 물체를 피해서 앞으로 가줘
+  Response: 
+    Observation: |-
+      The current screenshot shows a room with gym equipment, including a dumbbell and other weights on the floor. The camera is positioned low, close to the floor, and facing the gym equipment.
+    Thought: |-
+      To fulfill the user's request to move forward while avoiding the object in front, I need to navigate around the dumbbell.and Since the previous distance was 0.51m, move about 40cm and then tilt your head again.
+    Function: |-
+      carleft
+    Args:
+      {"angle": 45}
+    Status: |-
+      CONTINUE
+    Plan: |-
+      (1) Move the car slightly to the left to avoid the dumbbell.
+      (2) Based on the measured distance, move the car forward to proceed past the dumbbell.
+      (3) Move the car slightly to the right to return to the original path.
+    Comment: |-
+      If you collide with an object, problems may arise, so take your time when moving.
+  Tips: |-
+    
+
+example5:
+  Request: |-
+    지금 모니터에서 어떤 내용을 수행하고 있는지에 대해서 묘사해줘
+  Response: 
+    Observation: |-
+      The current screenshot shows a computer monitor displaying a code editor. The code editor contains Python code, with functions related to controlling a robot's movements such as 'carLeft', 'carRight', and 'CameraMove'. There is also a speaker labeled 'Britz' visible below the monitor.
+    Thought: |-
+      To fulfill the user's request to describe what is being performed on the monitor, I need to provide details about the visible code and its purpose.
+    Function: |-
+      speaktext
+    Args: 
+      {"text":"모니터에는 로봇의 움직임을 제어하는 PYTHON 코드가 표시되어 있습니다. 'CARLEFT' 함수는 로봇을 왼쪽으로 이동시키고, 'CARRIGHT' 함수는 로봇을 오른쪽으로 이동시키며, 'CAMERAMOVE' 함수는 카메라의 움직임을 제어합니다."}
+    Status: |-
+      FINISH
+    Plan: |-
+      <FINISH>
+    Comment: |-
+      The visible code on the monitor includes functions for controlling a robot's movements. The 'carright' function makes the robot move right, the 'carleft' function makes the robot move left, and the 'cameramove' function controls the camera movements.
+  Tips: |-
+    
+
+example6:
+  Request: |-
+    주위를 돌아다니면서 냉장고를 찾고 그 냉장고에 대해서 묘사해줘
+  Response: 
+    Observation: |-
+      The current screenshot shows a tiled floor with a small plastic drawer unit and some furniture in the background. There is no refrigerator visible in the image.
+    Thought: |-
+      To fulfill the user's request to find the refrigerator, I have to explore the refrigerator by rotating the camera.
+    Function: |-
+      cameramove
+    Args:  {"pan": 20, "tile": 90}
+    Status: |-
+      CONTINUE
+    Plan: |-
+      (1) Rotate the camera to explore the surroundings and look for the refrigerator.
+      (2) If the refrigerator is not visible, adjust the camera angle or move in different directions to continue the search.
+      (3) Move the car forward to explore the surroundings and look for the refrigerator.
+    Comment: |-
+      The current view shows a tiled floor and some furniture, but no refrigerator. I will move the car forward to explore the surroundings and look for the refrigerator.
+  Tips: |-
+    - By looking back at past images, we can make inferences about what this object is.
+    - When the object to be detected is not visible, first rotate the camera to search for the object.
+    - After detection, the object moves when no object is present.
+
+example7:
+  Request: |-
+    전방에 있는 책장의 2번째 칸에 뭐가 있는지 설명해줘.
+  Response: 
+    Observation: |-
+      The current screenshot shows a floor with a speckled pattern and a wooden cabinet in the background. There is a small white object on the floor near the cabinet. The camera is positioned low, close to the floor, and facing the cabinet.
+    Thought: |-
+      To fulfill the user's request to describe what is on the second shelf of the bookshelf in front, I need to move the camera upwards to get a better view of the bookshelf.
+    Function: |-
+      cameramove
+    Args: 
+      {"pan": 90, "tile": 20}
+    Status: |-
+      CONTINUE
+    Plan: |-
+      (1) Raise the camera tilt to 20 get a better view of the bookshelf.
+      (2) Observe and describe the contents of the second shelf of the bookshelf.
+      (3) If you can't see it, move back to gain visibility.
+    Comment: |-
+      The current camera view is low and facing a cabinet. I will move the camera upwards to get a better view of the bookshelf and describe the contents of the second shelf as requested.
+  Tips: |-
+    - By looking back at past images, we can make inferences about what this object is.
+    - Allows you to move back if the same situation persists.
+
+example8:
+  Request: |-
+    앞에 있는 사람의 옷에 뭐라고 적혀져 있는지 묘사해줘
+  Response: 
+    Observation: |-
+      The current screenshot shows a person sitting on an office chair. The person is wearing a black t-shirt with some text written on it. The text is partially visible.
+    Thought: |-
+      To fulfill the user's request to describe what is written on the person's shirt, I need to to move the camera upwards to read text.
+    Function: |-
+      cameramove
+    Args: 
+      {"pan": 90, "tile": 20}
+    Status: |-
+      CONTINUE
+    Plan: |-
+      (1) Raise the camera tilt to 20 get a better view of the text on the shirt.
+      (2) observe and describe the text on the shirt.
+    Comment: |-
+      Inferring from the current screenshot, it is easier to close the text on the shirt by raising it upward rather than moving closer.
+  Tips: |-
+    - In general, when making observations, it is best to adjust and move the camera to match the height of the target.
+
+example9: 
+  Request: |- 
+    주위를 돌아다니면서 냉장고가 보이면 그 냉장고를 묘사해줘 
+  Response: 
+    Observation: |-
+      The current screenshot shows a wooden cabinet with a white object on the floor in front of it. There is no refrigerator visible in the image.
+    Thought: |-
+      To fulfill the user's request to look around and describe a refrigerator if found, I need to move the car forward to explore the surroundings.It moves to the side because the front is currently blocked.
+    Function: |-
+      carleft
+    Args: 
+      {"angle": 90}
+    Status: |-
+      CONTINUE
+    Plan: |-
+      (1) Move the car forward to explore the surroundings.
+      (2) Rotate the camera to scan the area for a refrigerator.
+      (3) If a refrigerator is found, describe it in detail.
+    Comment: |-
+      The current camera view is low and facing a cabinet. I will move the car forward to explore the surroundings and look for a refrigerator as requested.
+  Tips: |-
+
+example10:
+  Request: |-
+      방을 돌면서 사람이 있는지 탐색해줘.
+  Response: 
+    Observation: |-
+      The current screenshot shows an indoor environment with a ceiling light, a window with bars, and part of a partition or wall. The camera is positioned looking upwards, capturing mostly the ceiling and upper parts of the room.
+    Thought: |-
+      To fulfill the user's request to explore the room and check for people,I have to turn around and look for people.
+    Function: |- 
+      carright
+    Args: 
+      {"angle": 90}
+    Status: |-
+      CONTINUE
+    Plan: |-
+      (1) Rotate the body to explore your surroundings.
+      (2) Move the car forward to explore the room.
+      (3) Adjust the camera tilt to get a better view of the surroundings.
+      (4) Continue moving and adjusting the camera until the room is fully explored.
+    Comment: |-
+      I am thinking about places where people can be, step by step.
+  Tips: |-
+    - Before taking action, plan and explore based on observations.
+
+
+example11: 
+  Request: |-
+    사람을 보고 인사해줘
+  Response: 
+    Observation: |-
+      The current screenshot shows a person sitting on an office chair. The person is wearing a black t-shirt and looking towards the camera.
+    Thought: |- 
+       To fulfill the user's request to greet the person, I need to use the SpeakText function to say hello.
+    Function: |-  
+      speaktext
+    Args: 
+      {"text": "안녕하세요 반가워요!!"}
+    Status: |-
+      FINISH
+    Plan: |-
+      <FINISH>
+    Comment: |-
+      The camera has successfully identified a person sitting on an office chair. I will greet the person by saying '안녕하세요!
+  Tips: |-
+
+  
+example11: 
+  Request: |-
+    움직이면서 주위에 사람이 있는지 탐색해줘
+  Response: 
+    Observation: |-
+      The current screenshot shows a close-up view of a speckled floor, indicating that the camera is positioned very low and close to the ground.
+    Thought: |- 
+      To continue the user's request to search for people around, I need to adjust the camera to a higher tilt to get a better view of the surroundings. This will help in identifying if there are any people in the vicinity.
+    Function: |-  
+      carright
+    Args: 
+      {"angle": 90}
+    Status: |-
+      CONTINUE
+    Plan: |-
+      (1) Rotate the car to explore the surroundings.
+      (2) Adjust the camera tilt to 20 to get a better vertical view of the surroundings.
+      (3) Rotate the camera to explore the surroundings.
+      (4) If you can't see someone, go around and look for someone.
+    Comment: |-
+      The current view is too low to effectively search for people. Adjusting the camera tilt will provide a better perspective to continue the search.  
+  Tips: |-
+    - When Tilt is 0, you look at the sky, and when Tilt is 180, you look at the ground.

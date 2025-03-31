@@ -1,0 +1,68 @@
+SpeakText:
+  summary: |-
+    “SpeakText” is used to convey information to the user. To enter text you must use the 'text' argument. text must be korean.
+  usage: |-
+    [1] API call: speaktext(text="")
+    [2] Args: None
+    [3] Example: speaktext(text="전방에 있는 물체는 사과인 것 같습니다.")
+    [4] Return: None
+
+CarBack:
+  summary: |-
+    "CarBack" makes the robot move backwards.
+  usage: |-
+    [1] API call: carback(distance=0)
+    [2] Args: 
+        - distance: distance is the distance you want to move. "distance = 1" means moving 1m.
+    [3] Example: carback(distance=0.5)
+    [4] Return: None
+
+CarForward:
+  summary: |-
+    "CarForward" makes the robot move backwards.
+  usage: |-
+    [1] API call: carforward(distance=0)
+    [2] Args: 
+        - distance: distance is the distance you want to move. "distance = 1" means moving 1m.
+    [3] Example: carforward(distance=0.5)
+    [4] Return: None
+
+CarLeft:
+  summary: |-
+    "CarLeft" makes the robot move left.
+  usage: |-
+    [1] API call: carleft(angle=0)
+    [2] Args: 
+        - angle: angle is the angle you want to turn. "angle= 360" means turn 360.
+    [3] Example: carleft(angle= 130)
+    [4] Return: None
+
+CarRight:
+  summary: |-
+    "CarRight" makes the robot move right.
+  usage: |-
+    [1] API call: carright(angle=0)
+    [2] Args: 
+        - angle: angle is the angle you want to turn. "angle= 360" means turn 360.
+    [3] Example: carright(angle=180)
+    [4] Return: None
+
+CameraMove:
+  summary: |-
+    “CameraMove” is used to control camera movements.
+  usage: |-
+    [1] API call: cameramove(pan=90,tilt=90)
+    [2] Args: 
+        - pan: The horizontal angle in degrees to which the camera should pan. Valid range is typically from 0 to 180. 90 is the initial point. The closer it is to 0, the closer the camera looks to the right.
+        - tilt: The vertical angle in degrees to which the camera should tilt. Valid range is typically from 0 to 180. 90 is the initial point. The closer it is to 0, the higher the camera looks.
+    [3] Example: cameramove(pan=90,tilt:30)
+    [4] Return: None
+
+Buzzer:
+  summary: |-
+    “Buzzer” makes the robot make a buzzer sound.
+  usage: |-
+    [1] API call: buzzer()
+    [2] Args: None
+    [3] Example: buzzer()
+    [4] Return: None
