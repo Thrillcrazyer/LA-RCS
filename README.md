@@ -1,6 +1,6 @@
-<div align="center">
-  <h2><b> LA-RCS (LLM-Agent Based Robot Control System) </b></h2>
-</div>
+
+  # LA-RCS (LLM-Agent Based Robot Control System) </b></h2>
+
 
 [![](https://img.shields.io/badge/arXiv:2505.18214-B31B1B?logo=arxiv)](https://arxiv.org/pdf/2505.18214)
 
