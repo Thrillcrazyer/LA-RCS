@@ -7,6 +7,11 @@
 * This is an official implementation of LA-RCS(LLM-Agent Based Robot Control System).
 - you can find more detail about our project on the [prject page](https://la-rcs.github.io/)
 
+## Acknowledgement
+
+We appreciate the following github repos for their valuable code and effort:
+- UFO (https://github.com/microsoft/UFO)
+
 ```bibtex
 @article{park2025rcs,
   title={LA-RCS: LLM-Agent-Based Robot Control System},
@@ -14,3 +19,5 @@
   journal={arXiv preprint arXiv:2505.18214},
   year={2025}
 }
+
+# Acknolw
