@@ -5,7 +5,7 @@
 [![](https://img.shields.io/badge/arXiv:2505.18214-B31B1B?logo=arxiv)](https://arxiv.org/pdf/2505.18214)
 
 * This is an official implementation of LA-RCS(LLM-Agent Based Robot Control System).
-- you can find more detail about our project on the [prject page](https://la-rcs.github.io/)
+- you can find more detail about our project on the [project page](https://la-rcs.github.io/)
 
 ## Acknowledgement
 
